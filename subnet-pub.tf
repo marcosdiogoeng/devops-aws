@@ -1,4 +1,4 @@
-resource "aws_subnet" "eks_subnet-pub-1a" {
+resource "aws_subnet" "eks_subnet_pub_1a" {
   vpc_id                  = aws_vpc.eks_vpc.id
   cidr_block              = cidrsubnet(var.cidr_block, 8, 1)
   availability_zone       = "${data.aws_region.current.name}a"
@@ -13,7 +13,7 @@ resource "aws_subnet" "eks_subnet-pub-1a" {
   )
 }
 
-resource "aws_subnet" "eks_subnet-pub-1b" {
+resource "aws_subnet" "eks_subnet_pub_1b" {
   vpc_id                  = aws_vpc.eks_vpc.id
   cidr_block              = cidrsubnet(var.cidr_block, 8, 2)
   availability_zone       = "${data.aws_region.current.name}b"
@@ -28,12 +28,12 @@ resource "aws_subnet" "eks_subnet-pub-1b" {
   )
 }
 
-resource "aws_route_table_association" "eks_assoc_pub-1a" {
-  subnet_id      = aws_subnet.eks_subnet-pub-1a.id
+resource "aws_route_table_association" "eks_assoc_pub_1a" {
+  subnet_id      = aws_subnet.eks_subnet_pub_1a.id
   route_table_id = aws_route_table.eks_rtb_pub.id
 }
 
-resource "aws_route_table_association" "eks_assoc_pub-1b" {
-  subnet_id      = aws_subnet.eks_subnet-pub-1b.id
+resource "aws_route_table_association" "eks_assoc_pub_1b" {
+  subnet_id      = aws_subnet.eks_subnet_pub_1b.id
   route_table_id = aws_route_table.eks_rtb_pub.id
 }
